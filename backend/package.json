@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^latest",
+    "dotenv": "^latest",
+    "express": "^latest",
+    "mongoose": "^latest"
+  },
+  "devDependencies": {
+    "nodemon": "^latest"
+  }
+}
