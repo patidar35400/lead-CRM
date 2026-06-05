@@ -12,19 +12,41 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("CRM Backend Running");
 });
+
 app.post("/api/leads", async (req, res) => {
   try {
-    const lead = new Lead(req.body);
+    console.log("🔥 RECEIVED BODY:", req.body);
+
+    const { name, email, phone, company, status, notes } = req.body;
+
+    // validation (IMPORTANT)
+    if (!name || !email) {
+      return res.status(400).json({
+        message: "Name and Email required"
+      });
+    }
+
+    const lead = new Lead({
+      name,
+      email,
+      phone,
+      company,
+      status,
+      notes
+    });
 
     const savedLead = await lead.save();
 
+    console.log("✅ SAVED:", savedLead);
+
     res.status(201).json(savedLead);
+
   } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
+    console.log("❌ ERROR:", error);
+    res.status(500).json({ message: error.message });
   }
 });
+
 app.get("/api/leads", async (req, res) => {
   try {
     const leads = await Lead.find();
@@ -65,16 +87,16 @@ app.put("/api/leads/:id", async (req, res) => {
   }
 });
 
-const PORT = 5000;
-mongoose
-  .connect(process.env.MONGO_URI)
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.log("MongoDB Error:", err);
   });
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
