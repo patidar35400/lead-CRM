@@ -1,18 +1,34 @@
-Lead Management CRM (MERN Stack)
+# Lead Management CRM (MERN Stack)
 
-A simple Lead Management CRM system built using MERN Stack (MongoDB, Express, React, Node.js).  
-It allows users to add, edit, delete, and search leads with real-time database integration.
+A modern Lead Management CRM built with the MERN Stack (MongoDB, Express.js, React.js, Node.js). It helps users efficiently manage customer leads with full CRUD operations, search functionality, and real-time database updates.
 
- Features:
+## Features
 - Add new leads
-- Edit existing leads (Popup Modal UI)
+- Edit leads using a popup modal
 - Delete leads
-- Search leads (name, email, company)
+- Search by name, email, or company
 - REST API integration
-- MongoDB database storage
+- MongoDB database
 - Real-time UI updates
+- Responsive user interface
 
-Frontend:
+## Tech Stack
+### Frontend
 - React.js
 - Axios
 - JavaScript (ES6)
+- CSS
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+
+## Installation
+
+```bash
+git clone https://github.com/patidar35400/lead-CRM.git
+cd lead-CRM
+npm install
